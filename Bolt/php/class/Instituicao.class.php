@@ -54,12 +54,24 @@
 				foreach ($value as $instituicao) {
 					//Esta string e que será escrita na pagina
 					$str = 
-					'<div class="col-lg-4">'.
+					/*'<div class="col-lg-4">'.
 						'<a href="#">'.'<img src="img/1.jpg" alt="">'.'</a>'.
 						'<p> Responsavel: '.$instituicao['nome_respons'].'</p>'.
 						'<p> Cidade: '.$instituicao['cidade'].'</p>'.
 						'<p> Estado: '.$instituicao['estado'].'</p>'.
-					'</div>';
+					'</div>';*/
+					'<div class="col-lg-4 col-sm-6 portfolio-item">'.
+				        '<div class="card h-100">'.
+				          '<a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>'.
+				          '<div class="card-body">'.
+				            '<h4 class="card-title">'.
+				              '<p> Responsavel: '.$instituicao['nome_respons'].'</p>'.
+							  '<p> Cidade: '.$instituicao['cidade'].'</p>'.
+							  '<p> Estado: '.$instituicao['estado'].'</p>'.
+				            '</h4>
+				           </div>
+				        </div>
+				    </div>';
 					//O comando echo escreve ela na tela
 					echo $str;
 				}
