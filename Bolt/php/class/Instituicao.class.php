@@ -20,7 +20,8 @@
 		private $telefone;
 		private $celular;
 		private $descricao;
-		private $horario_func;
+		private $horario_abertura;
+		private $horario_fechamento;
 		private $img;
 
 		//Esta função busca todos os itens do banco, OBS: TODOS MESMO
@@ -80,4 +81,47 @@
 			}
 		}
 
+		public function inserirInstituicao($value)
+		{
+			if(!empty($value)){
+					/*
+						[nome_respons] => hcdvsdk [nome_inst] => pcbwc [rua] => wbwvp [bairro] => djvbdj [cidade] => jdwpbv [estado] => jcpwb [email] => qcjpw [telefone] => cjewpb [celular] => cjew [descricao] => jdpwbe [horario_abertura] => 12:32 [horario_fechamento] => 19:02
+					*/
+					$dados = $value;
+					$sql = "INSERT INTO instituicao (nome_inst,nome_respons,rua,numero,bairro,cidade,estado,email,telefone,celular,descricao,horario_abertura,horario_fechamento) VALUES 
+					(:nome_inst,:nome_respons,:rua,:numero,:bairro,:cidade,:estado,:email,:telefone,:celular,:descricao,:horario_abertura,:horario_fechamento)";
+
+					try {
+						$sql = $this->pdo->prepare($sql);
+				
+						$sql->bindValue(':nome_inst',$dados['nome_inst']);
+						$sql->bindValue(':nome_respons',$dados['nome_respons']);
+						$sql->bindValue(':rua',$dados['rua']);
+						$sql->bindValue(':numero',$dados['numero']);
+						$sql->bindValue(':bairro',$dados['bairro']);
+						$sql->bindValue('cidade',$dados['cidade']);
+						$sql->bindValue('estado',$dados['estado']);
+						$sql->bindValue(':email',$dados['email']);
+						$sql->bindValue(':telefone',$dados['telefone']);
+						$sql->bindValue(':celular',$dados['celular']);
+						$sql->bindValue(':descricao',$dados['descricao']);
+						$sql->bindValue(':horario_abertura',$dados['horario_abertura']);
+						$sql->bindValue(':horario_fechamento',$dados['horario_fechamento']);
+						if($sql->execute()){
+							echo "Funcionou";
+						}else{
+							echo "Deu erro ao executar";
+						}
+
+					} catch (Exception $e) {
+						echo $e->getMessage();
+					}
+
+					
+					
+				}else{
+					
+					echo "Os dados foram vazios";
+				}
+		}
 	}

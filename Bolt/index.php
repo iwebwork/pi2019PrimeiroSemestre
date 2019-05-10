@@ -30,10 +30,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link active bg-success" href="index.html">Início</a>
+            <a class="nav-link active bg-success" href="index.php">Início</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-success" href="comodoar.html">Como doar</a>
+            <a class="nav-link text-success" href="comodoar.php">Como doar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-success" href="sobre.html">Sobre nós</a>
