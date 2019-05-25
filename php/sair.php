@@ -2,5 +2,5 @@
 	session_start();
 
 	unset($_SESSION['id']);
-	header("Location: login.php");
+	header("Location: ../admin/login.php");
 	exit;

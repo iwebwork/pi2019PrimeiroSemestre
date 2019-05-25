@@ -81,13 +81,13 @@ $(document).ready(function(){
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav bg-success">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.php">
           <i class="fas fa-hand-holding-heart"></i>
           <span>Instituições</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="produtos.php">
           <i class="fas fa-box-open"></i>
           <span>Produtos</span></a>
@@ -100,8 +100,8 @@ $(document).ready(function(){
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6 text-success">
-                <h2><i class="fas fa-hand-holding-heart"></i>
-                <span>Instituições</span></h2>
+                <h2><i class="fas fa-box-open"></i>
+                <span>Produtos</span></h2>
         			</div>
         			<div class="col-sm-6">
         			     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Novo</span></a>
@@ -119,9 +119,7 @@ $(document).ready(function(){
         							</span>
         						</th>
                                 <th>Nome</th>
-                                <th>Email</th>
-        						            <th>Endereço</th>
-                                <th>Telefone</th>
+                                <th>Tipo</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -133,10 +131,8 @@ $(document).ready(function(){
         								<label for="checkbox1"></label>
         							</span>
         						</td>
-                                <td>Instituição 1</td>
-                                <td>email@mail.com</td>
-        						            <td>Rua X, 12 - Bairro - Cidade/MG</td>
-                                <td>(31) 3555-2222</td>
+                                <td>Produto 1</td>
+                                <td>Tipo</td>
                                 <td>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
@@ -149,10 +145,8 @@ $(document).ready(function(){
         								<label for="checkbox2"></label>
         							</span>
         						</td>
-                              <td>Instituição 2</td>
-                              <td>email@mail.com</td>
-                              <td>Rua X, 12 - Bairro - Cidade/MG</td>
-                              <td>(31) 3555-2222</td>
+                              <td>Produto 2</td>
+                              <td>Tipo</td>
                               <td>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
@@ -165,10 +159,8 @@ $(document).ready(function(){
         								<label for="checkbox3"></label>
         							</span>
         						</td>
-                              <td>Instituição 3</td>
-                              <td>email@mail.com</td>
-                              <td>Rua X, 12 - Bairro - Cidade/MG</td>
-                              <td>(31) 3555-2222</td>
+                              <td>Produto 3</td>
+                              <td>Tipo</td>
                               <td>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
@@ -195,7 +187,7 @@ $(document).ready(function(){
         			<div class="modal-content">
         				<form>
         					<div class="modal-header">
-        						<h4 class="modal-title">Adicionar Instituição</h4>
+        						<h4 class="modal-title">Adicionar Produto</h4>
         						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         					</div>
         					<div class="modal-body">
@@ -204,16 +196,8 @@ $(document).ready(function(){
         							<input type="text" class="form-control" required>
         						</div>
         						<div class="form-group">
-        							<label>Email</label>
+        							<label>Tipo</label>
         							<input type="email" class="form-control" required>
-        						</div>
-        						<div class="form-group">
-        							<label>Endereço</label>
-        							<textarea class="form-control" required></textarea>
-        						</div>
-        						<div class="form-group">
-        							<label>Telefone</label>
-        							<input type="text" class="form-control" required>
         						</div>
         					</div>
         					<div class="modal-footer">
@@ -230,7 +214,7 @@ $(document).ready(function(){
         			<div class="modal-content">
         				<form>
         					<div class="modal-header">
-        						<h4 class="modal-title">Editar Instituição</h4>
+        						<h4 class="modal-title">Editar Produto</h4>
         						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         					</div>
         					<div class="modal-body">
@@ -239,16 +223,8 @@ $(document).ready(function(){
         							<input type="text" class="form-control" required>
         						</div>
         						<div class="form-group">
-        							<label>Email</label>
+        							<label>Tipo</label>
         							<input type="email" class="form-control" required>
-        						</div>
-        						<div class="form-group">
-        							<label>Endereço</label>
-        							<textarea class="form-control" required></textarea>
-        						</div>
-        						<div class="form-group">
-        							<label>Telefone</label>
-        							<input type="text" class="form-control" required>
         						</div>
         					</div>
         					<div class="modal-footer">
@@ -265,7 +241,7 @@ $(document).ready(function(){
         			<div class="modal-content">
         				<form>
         					<div class="modal-header">
-        						<h4 class="modal-title">Deletar Instituição</h4>
+        						<h4 class="modal-title">Deletar Produto</h4>
         						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         					</div>
         					<div class="modal-body">
@@ -316,7 +292,7 @@ $(document).ready(function(){
         <div class="modal-body">Selecione "Sair" abaixo se você estiver pronto para terminar sua sessão atual.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a href="../php/sair.php" class="btn btn-success" href="login.php">Sair</a>
+          <a class="btn btn-success" href="login.php">Sair</a>
         </div>
       </div>
     </div>

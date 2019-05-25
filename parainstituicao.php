@@ -27,28 +27,28 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg bg-white fixed-top nav-pills">
+  <nav class="navbar fixed-top navbar-expand-lg bg-white fixed-top nav-pills border-bottom" style="border-color: #74cfae">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><img src="img\logo.png" class="float-left" alt="Logo DoeFácil"></a>
+      <a class="navbar-brand" href="index.php"><img src="img\logo.png" class="float-left" alt="Logo DoeFácil"></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link text-success" href="index.html">Início</a>
+            <a class="nav-link text-success" href="index.php">Início</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-success" href="comodoar.html">Como doar</a>
+            <a class="nav-link text-success" href="comodoar.php">Como doar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active bg-success" href="parainstituicao.html">Para Instituições</a>
+            <a class="nav-link active bg-success" href="parainstituicao.php">Para Instituições</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-success" href="sobre.html">Sobre nós</a>
+            <a class="nav-link text-success" href="sobre.php">Sobre nós</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-success" href="contato.html">Contato</a>
+            <a class="nav-link text-success" href="contato.php">Contato</a>
           </li>
         </ul>
       </div>
