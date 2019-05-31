@@ -16,6 +16,7 @@
 		private $bairro;
 		private $cidade;
 		private $estado;
+		private $cep;
 		private $email;
 		private $telefone;
 		private $celular;
@@ -23,6 +24,7 @@
 		private $horario_abertura;
 		private $horario_fechamento;
 		private $img;
+		private $status;//0 esta pendente, 1 esta liberada
 
 		//Esta função busca todos os itens do banco, OBS: TODOS MESMO
 		public function buscarTodosOsDados(){
@@ -78,44 +80,44 @@
 
 		public function inserirInstituicao($value)
 		{
+			//Array ( [nome] => teste [responsavel] => testerest [cep] => 32071-156 [bairro] => Sapucaia II [rua] => Rua Esmeraldas [num_rua] => 144 [cidade] => Contagem [uf] => MG [email] => teste@teste.com [tel_fixo] => 31 23446765 [tel_celular] => 21 23454367 [descricao] => jvfvnspivsivsisv [hr_inicio] => 08:00 [hr_fim] => 23:00 )
 			if(!empty($value)){
-					
 					$dados = $value;
-					$sql = "INSERT INTO instituicao (nome_inst,nome_respons,rua,numero,bairro,cidade,estado,email,telefone,celular,descricao,horario_abertura,horario_fechamento) VALUES 
-					(:nome_inst,:nome_respons,:rua,:numero,:bairro,:cidade,:estado,:email,:telefone,:celular,:descricao,:horario_abertura,:horario_fechamento)";
-
-					try {
-						$sql = $this->pdo->prepare($sql);
-				
-						$sql->bindValue(':nome_inst',$dados['nome_inst']);
-						$sql->bindValue(':nome_respons',$dados['nome_respons']);
-						$sql->bindValue(':rua',$dados['rua']);
-						$sql->bindValue(':numero',$dados['numero']);
-						$sql->bindValue(':bairro',$dados['bairro']);
-						$sql->bindValue('cidade',$dados['cidade']);
-						$sql->bindValue('estado',$dados['estado']);
-						$sql->bindValue(':email',$dados['email']);
-						$sql->bindValue(':telefone',$dados['telefone']);
-						$sql->bindValue(':celular',$dados['celular']);
-						$sql->bindValue(':descricao',$dados['descricao']);
-						$sql->bindValue(':horario_abertura',$dados['horario_abertura']);
-						$sql->bindValue(':horario_fechamento',$dados['horario_fechamento']);
-						//Ele retorna true caso tenha funcionado, ou false se der erro
-						if($sql->execute()){
-							echo "Funcionou";
-						}else{
-							echo "Deu erro ao executar";
-						}
-
-					} catch (Exception $e) {
-						echo $e->getMessage();
-					}
-
+					$sql = "INSERT INTO instituicao(nome_inst, nome_respons,rua
+					, numero, bairro, cidade,estado,email,telefone,celular,descricao,
+					horario_abertura, horario_fechamento, cep, vistoria) VALUES
+					(:nome_inst, :nome_respons, :rua,:numero, :bairro, :cidade, :estado, :email,
+					:telefone,:celular, :descricao, :horario_abertura, :horario_fechamento, :cep,
+					:vistoria)";
+					echo $sql."<br>";
+					$status = 0;
+					$teste = "teste";
+					//print_r($dados);	
+					$sql = $this->pdo->prepare($sql);
+					$sql->bindValue(':nome_inst',$dados['nome']);
+					$sql->bindValue(':nome_respons',$dados['responsavel']);
+					$sql->bindValue(':rua',$dados['rua']);
+					$sql->bindValue(':numero',$dados['num_rua']);
+					$sql->bindValue(':bairro',$dados['bairro']);
+					$sql->bindValue(':cidade',$dados['cidade']);
+					$sql->bindValue(':estado',$dados['uf']);
+					$sql->bindValue(':email',$dados['email']);
+					$sql->bindValue(':telefone',$dados['tel_fixo']);
+					$sql->bindValue(':celular',$dados['tel_celular']);
+					$sql->bindValue(':descricao',$dados['descricao']);
+					$sql->bindValue(':horario_abertura',$dados['hr_inicio']);
+					$sql->bindValue(':horario_fechamento',$dados['hr_fim']);
+					$sql->bindValue(':cep',$dados['cep']);
+					$sql->bindValue(':vistoria',$status);
+					//Ele retorna true caso tenha funcionado, ou false se der erro
+					if($sql->execute()){
+						echo "Funcionou";
+					}else{
+						echo "Deu erro ao executar";
+					}	
 					
-					
-				}else{
-					
-					echo "Os dados foram vazios";
-				}
+			}else{				
+				echo "Os dados foram vazios";
+			}
 		}
 	}

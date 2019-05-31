@@ -65,7 +65,8 @@
 <div class="container">
     <div class="row justify-content-md-center">
 
-      <form method="post" action="cadastro.php">
+      <form method="POST" action="php/cadastrar.php">
+
         <h4>Realizar Pre-Cadastro da Instituição</h4><br>
         <label>Nome:
         <input name="nome" class="form-control" type="text" id="nome" size="60" /></label><br />
@@ -78,19 +79,19 @@
                onblur="pesquisacep(this.value);" /></label>
 
         <label>Bairro:
-        <input name="bairro" class="form-control" type="text" id="bairro" size="40" disabled="disabled"/></label><br />
+        <input name="bairro" class="form-control" type="text" id="bairro" size="40" readonly="disabled"/></label><br />
 
         <label>Rua:
-        <input name="rua" class="form-control" type="text" id="rua" size="60" disabled="disabled"/></label><br />
+        <input name="rua" class="form-control" type="text" id="rua" size="60" readonly="disabled"/></label><br />
 
         <label>Numero:
-        <input name="num_rua" class="form-control" type="text" id="num_rua" size="10" /></label><br />
+        <input name="num_rua" class="form-control" type="number" id="num_rua" size="10" /></label><br />
 
         <label>Cidade:
-        <input name="cidade" class="form-control" type="text" id="cidade" size="40" disabled="disabled"/></label><br />
+        <input name="cidade" class="form-control" type="text" id="cidade" size="40" readonly="disabled"/></label><br />
 
         <label>Estado:
-        <input name="uf" class="form-control" type="text" id="uf" size="2" disabled="disabled"/></label><br />
+        <input name="uf" class="form-control" type="text" id="uf" size="2" readonly="disabled"/></label><br />
 
         <label>E-mail:
         <input name="email" class="form-control" type="text" id="email" size="40" /></label><br />
@@ -105,14 +106,15 @@
         <input name="descricao" class="form-control" type="text" id="descricao" size="40" /></label><br />
 
         <label>Horario Inicio:
-        <input name="hr_inicio" class="form-control" type="text" id="hr_inicio" size="40" /></label><br />
+        <input name="hr_inicio" type="time" class="form-control" type="text" id="hr_inicio" size="40" /></label><br />
 
         <label>Horario Fim:
-        <input name="hr_fim" class="form-control" type="text" id="hr_fim" size="40" /></label><br />
+        <input name="hr_fim" type="time" class="form-control" type="text" id="hr_fim" size="40" /></label><br />
 
         <input type="submit" class="btn btn-success" value="Cadastrar">
         <br><br><br><br>
         </div>
+      </form>
     </div>
   </div>
 
