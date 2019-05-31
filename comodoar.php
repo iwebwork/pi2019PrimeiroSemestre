@@ -81,51 +81,12 @@
      <br>
      <p>Resultado da pesquisa:</p>
 
-     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="h-100">
-          <a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a class="nav-link text-success" href="#">Nome Instituição</a>
-            </h4>
-            <p class="card-text">Dados da instituição.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="h-100">
-          <a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a class="nav-link text-success" href="#">Nome Instituição</a>
-            </h4>
-            <p class="card-text">Dados da instituição.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="h-100">
-          <a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a class="nav-link text-success" href="#">Nome Instituição</a>
-            </h4>
-            <p class="card-text">Dados da instituição.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="h-100">
-          <a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a class="nav-link text-success" href="#">Nome Instituição</a>
-            </h4>
-            <p class="card-text">Dados da instituição.</p>
-          </div>
-        </div>
-      </div>
+    <div class="row">
+      <?php
+        include_once 'php/class/Instituicao.class.php';
+        $inst = new Instituicao();
+        $inst->escreverOsDados($inst->buscarTodosOsDados());
+      ?>  
     </div>
 
 
