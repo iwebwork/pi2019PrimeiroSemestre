@@ -49,35 +49,6 @@
 			}
 		}
 
-		public function escreverOsDados($value)
-		{
-			//Aqui eu verifico se o parametro estavazio, se não estiver
-			if(!empty($value)){
-				//Eu itero todo o meu array com o foreach e atribuo os dados ao array $instituicao
-
-				foreach ($value as $instituicao) {
-					//Esta string e que será escrita na pagina
-					$str = 
-					'<div class="col-lg-4 col-sm-6 portfolio-item">'.
-				        '<div class="card h-100">'.
-				          '<a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>'.
-				          '<div class="card-body">'.
-				            '<h4 class="card-title">'.
-				              '<p> Responsavel: '.$instituicao['nome_respons'].'</p>'.
-							  '<p> Cidade: '.$instituicao['cidade'].'</p>'.
-							  '<p> Rua: '.$instituicao['rua'].'</p>'.
-				            '</h4>
-				           </div>
-				        </div>
-				    </div>';
-					//O comando echo escreve ela na tela
-					echo $str;
-				}
-			}else{
-				echo "Os dados estão vazios";
-			}
-		}
-
 		public function inserirInstituicao($value)
 		{
 			//Array ( [nome] => teste [responsavel] => testerest [cep] => 32071-156 [bairro] => Sapucaia II [rua] => Rua Esmeraldas [num_rua] => 144 [cidade] => Contagem [uf] => MG [email] => teste@teste.com [tel_fixo] => 31 23446765 [tel_celular] => 21 23454367 [descricao] => jvfvnspivsivsisv [hr_inicio] => 08:00 [hr_fim] => 23:00 )
@@ -120,4 +91,85 @@
 				echo "Os dados foram vazios";
 			}
 		}
+
+		public function deletarInst($value)
+		{	
+			if (!empty($value)) {
+				$sql = "DELETE FROM instituicao WHERE id_inst = :id_inst";
+				$sql = $this->pdo->prepare($sql);
+				$sql->bindValue(':id_inst',$value);
+				if ($sql->execute()) {
+					# code...
+					echo "excluido";
+				}		
+			}else{
+				echo "O valor veio vazio";
+			}
+					
+		}
+
+		//------------------------------Funções para escrever na tela---------------------------------
+		public function escreverOdDadosParaOadim($value)
+		{
+			if (!empty($value)) {
+				# code...
+				foreach ($value as $dados) {
+					# code...
+					$str =
+					'<tr>
+                  		<td>
+                  			<span class="custom-checkbox">
+                  				<input type="checkbox" id="checkbox1" name="options[]" value="1">
+                  				<label for="checkbox1"></label>
+                  			</span>
+                  		</td>
+                        <td>'.$dados['nome_inst'].'</td>
+                        <td>'.$dados['email'].'</td>
+        				<td>'.$dados['rua'].', Nº: '.$dados['numero'].' - Bairro: '.$dados['bairro'].'- Cidade: '.$dados['cidade'].'/'.$dados['estado'].'</td>
+                        <td>(31) 3555-2222</td>
+                        <td>
+                        	<form method = "POST" action="../php/editar.php">
+                        		<input type="hidden" name = "id_inst" value="'.$dados['id_inst'].'">
+		                        <button type="submit" class="edit"><i class="material-icons"  title="Editar">&#xE254;</i></button>
+		                    </form>
+		                    <form method = "POST" action="../php/deletar.php">
+		                    	<input type="hidden" name = "id_inst" value="'.$dados['id_inst'].'">
+		                        <button type="submit" class="delete"><i class="material-icons" title="Deletar">&#xE872;</i></button>
+		                    </form>
+                        </td>
+                    </tr>';
+                    echo $str;
+				}
+			}
+		}
+
+		public function escreverOsDados($value)
+		{
+			//Aqui eu verifico se o parametro estavazio, se não estiver
+			if(!empty($value)){
+				//Eu itero todo o meu array com o foreach e atribuo os dados ao array $instituicao
+
+				foreach ($value as $instituicao) {
+					//Esta string e que será escrita na pagina
+					$str = 
+					'<div class="col-lg-4 col-sm-6 portfolio-item">'.
+				        '<div class="card h-100">'.
+				          '<a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>'.
+				          '<div class="card-body">'.
+				            '<h4 class="card-title">'.
+				              '<p> Responsavel: '.$instituicao['nome_respons'].'</p>'.
+							  '<p> Cidade: '.$instituicao['cidade'].'</p>'.
+							  '<p> Rua: '.$instituicao['rua'].'</p>'.
+				            '</h4>
+				           </div>
+				        </div>
+				    </div>';
+					//O comando echo escreve ela na tela
+					echo $str;
+				}
+			}else{
+				echo "Os dados estão vazios";
+			}
+		}
+
 	}

@@ -126,54 +126,27 @@ $(document).ready(function(){
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-        						<td>
-        							<span class="custom-checkbox">
-        								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-        								<label for="checkbox1"></label>
-        							</span>
-        						</td>
-                                <td>Instituição 1</td>
-                                <td>email@mail.com</td>
-        						            <td>Rua X, 12 - Bairro - Cidade/MG</td>
-                                <td>(31) 3555-2222</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-        						<td>
-        							<span class="custom-checkbox">
-        								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-        								<label for="checkbox2"></label>
-        							</span>
-        						</td>
-                              <td>Instituição 2</td>
+                            <!--<tr>
+                  						<td>
+                  							<span class="custom-checkbox">
+                  								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+                  								<label for="checkbox1"></label>
+                  							</span>
+                  						</td>
+                              <td>Instituição 1</td>
                               <td>email@mail.com</td>
-                              <td>Rua X, 12 - Bairro - Cidade/MG</td>
+        						          <td>Rua X, 12 - Bairro - Cidade/MG</td>
                               <td>(31) 3555-2222</td>
                               <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
-                                </td>
-                            </tr>
-        					<tr>
-        						<td>
-        							<span class="custom-checkbox">
-        								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-        								<label for="checkbox3"></label>
-        							</span>
-        						</td>
-                              <td>Instituição 3</td>
-                              <td>email@mail.com</td>
-                              <td>Rua X, 12 - Bairro - Cidade/MG</td>
-                              <td>(31) 3555-2222</td>
-                              <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
-                                </td>
-                            </tr>
+                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
+                              </td>
+                            </tr>-->
+                            <?php
+                              include_once '../php/class/Instituicao.class.php';
+                              $inst = new Instituicao();
+                              $inst->escreverOdDadosParaOadim($inst->buscarTodosOsDados());
+                            ?>
                         </tbody>
                     </table>
         			<div class="clearfix">
