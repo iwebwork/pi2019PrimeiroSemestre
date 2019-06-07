@@ -108,7 +108,36 @@
 					
 		}
 
+		public function liberarInstituicao($id_inst)
+		{
+			if (!empty($id_inst)) {
+				$sql = "UPDATE instituicao SET vistoria = :vistoria WHERE id_inst = :id_inst";
+				$sql = $this->pdo->prepare($sql);
+				$sql->bindValue(':vistoria',1);
+				$sql->bindValue(':id_inst',$id_inst);
+				//echo "Vai pro executar";
+				if($sql->execute()){
+					echo "Funcionou";
+				}else{
+					echo "Deu erro";
+				}
+			}
+
+		}
+
 		//------------------------------Funções para escrever na tela---------------------------------
+
+		public function strVistotia($value)
+		{
+			# code...
+			if ($value == 0) {
+				# code...
+				return '<button type="submit" class="edit">Liberar</button>';
+			}else{
+				return '<button type="submit" class="edit" disabled >Liberado</button>';
+			}
+		}
+
 		public function escreverOdDadosParaOadim($value)
 		{
 			if (!empty($value)) {
@@ -126,9 +155,15 @@
                         <td>'.$dados['nome_inst'].'</td>
                         <td>'.$dados['email'].'</td>
         				<td>'.$dados['rua'].', Nº: '.$dados['numero'].' - Bairro: '.$dados['bairro'].'- Cidade: '.$dados['cidade'].'/'.$dados['estado'].'</td>
+        				<td>'.
+        					'<form method = "POST" action="../php/vistoria.php">
+        						<input type="hidden" name="id_inst" value="'.$dados['id_inst'].'">'.
+                        		$this->strVistotia($dados['vistoria'])
+		                    .'</form>'.
+        				'</td>
                         <td>(31) 3555-2222</td>
                         <td>
-                        	<form method = "POST" action="../php/editar.php">
+                        	<form method = "POST" action="../php/vistoria.php">
                         		<input type="hidden" name = "id_inst" value="'.$dados['id_inst'].'">
 		                        <button type="submit" class="edit"><i class="material-icons"  title="Editar">&#xE254;</i></button>
 		                    </form>

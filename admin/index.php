@@ -121,6 +121,7 @@ $(document).ready(function(){
                                 <th>Nome</th>
                                 <th>Email</th>
         						            <th>Endereço</th>
+                                <th>Vistoria</th>
                                 <th>Telefone</th>
                                 <th>Ações</th>
                             </tr>
