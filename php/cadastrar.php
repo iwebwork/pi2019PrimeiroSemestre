@@ -3,8 +3,8 @@
 	//print_r($_POST);
 	include 'class/Instituicao.class.php';
 	include 'class/Usuario.class.php';
-	//$Usuario = new Usuario();
-	//$Usuario->verificacaoLogin();
+	$Usuario = new Usuario();
+	$Usuario->verificacaoLogin();
 	$inst = new Instituicao();
 	
 	if (!empty($_POST)) {
