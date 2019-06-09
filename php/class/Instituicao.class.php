@@ -49,12 +49,13 @@
 			}
 		}
 
-		public function buscarTodosOsDadosComVistoriaOK(){
+		public function buscarEstadoComVistoriaOK($value){
 			//Query de busca
-			$sql = "SELECT * FROM instituicao WHERE vistoria = 1";
+			$sql = "SELECT * FROM instituicao WHERE vistoria = 1 AND estado = :estado";
 			//Atribuição da query a coneção,
 			//OBS: A variavel $sql aqui recebe a requisição, mas pode ser qualquer outro nome
 			$sql = $this->pdo->prepare($sql);
+			$sql->bindValue(':estado',$value);
 			//Aqui eu executo a query, ela retorna true ou false, se for false cai no else
 			if($sql->execute()){
 				//Como ela não esta com valor false, $dados recebe todos os dados, por isso e fetchAll()
@@ -62,14 +63,49 @@
 				//Se ela não estiver vazia, eu retorno os dados
 				if(!empty($dados)){
 					return $dados;
-				}else{
-					echo "O banco esta vazio";
 				}
 				
-			}else{
-				echo "Erro, a busca não deu certo";
 			}
 		}
+
+		public function buscarBairroComVistoriaOK($value){
+			//Query de busca
+			$sql = "SELECT * FROM instituicao WHERE vistoria = 1 AND bairro = :bairro";
+			//Atribuição da query a coneção,
+			//OBS: A variavel $sql aqui recebe a requisição, mas pode ser qualquer outro nome
+			$sql = $this->pdo->prepare($sql);
+			$sql->bindValue(':bairro',$value);
+			//Aqui eu executo a query, ela retorna true ou false, se for false cai no else
+			if($sql->execute()){
+				//Como ela não esta com valor false, $dados recebe todos os dados, por isso e fetchAll()
+				$dados = $sql->fetchAll();
+				//Se ela não estiver vazia, eu retorno os dados
+				if(!empty($dados)){
+					return $dados;
+				}
+				
+			}
+		}
+
+		public function buscarCidadeComVistoriaOK($value){
+			//Query de busca
+			$sql = "SELECT * FROM instituicao WHERE vistoria = 1 AND cidade = :cidade";
+			//Atribuição da query a coneção,
+			//OBS: A variavel $sql aqui recebe a requisição, mas pode ser qualquer outro nome
+			$sql = $this->pdo->prepare($sql);
+			$sql->bindValue(':cidade',$value);
+			//Aqui eu executo a query, ela retorna true ou false, se for false cai no else
+			if($sql->execute()){
+				//Como ela não esta com valor false, $dados recebe todos os dados, por isso e fetchAll()
+				$dados = $sql->fetchAll();
+				//Se ela não estiver vazia, eu retorno os dados
+				if(!empty($dados)){
+					return $dados;
+				}
+				
+			}
+		}
+
 
 
 		public function inserirInstituicao($value)
@@ -172,7 +208,7 @@
 				$sql->bindValue(':cep',$value['cep']);
 				$sql->bindValue(':id_inst',$value['id_inst']);
 				if ($sql->execute()) {
-					header("Location: ../index.php");
+					header("Location: ../admin/index.php");
 				}else{
 					echo "Falha ao atualizar";
 				}
@@ -258,27 +294,32 @@
 			//Aqui eu verifico se o parametro estavazio, se não estiver
 			if(!empty($value)){
 				//Eu itero todo o meu array com o foreach e atribuo os dados ao array $instituicao
-
+				echo '<p>Resultado da pesquisa:</p>
+					<div class="row">';
 				foreach ($value as $instituicao) {
 					//Esta string e que será escrita na pagina
 					$str = 
-					'<div class="col-lg-4 col-sm-6 portfolio-item">'.
-				        '<div class="card h-100">'.
-				          '<a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>'.
-				          '<div class="card-body">'.
-				            '<h4 class="card-title">'.
-				              '<p> Responsavel: '.$instituicao['nome_respons'].'</p>'.
-							  '<p> Cidade: '.$instituicao['cidade'].'</p>'.
-							  '<p> Rua: '.$instituicao['rua'].'</p>'.
-				            '</h4>
-				           </div>
-				        </div>
-				    </div>';
+					'
+						<div class="col-lg-4 col-sm-6 portfolio-item">'.
+					        '<div class="card h-100">'.
+					          '<a href="#"><img class="card-img-top" style="height: 250px; width: max" src="img/img.jpg" alt=""></a>'.
+					          '<div class="card-body">'.
+					            '<h4 class="card-title">'.
+					              '<p> Responsavel: '.$instituicao['nome_respons'].'</p>'.
+					              '<p> Estado: '.$instituicao['estado'].'</p>'.
+								  '<p> Cidade: '.$instituicao['cidade'].'</p>'.
+								  '<p> Bairro: '.$instituicao['bairro'].'</p>'.
+								  '<p> Rua: '.$instituicao['rua'].'</p>'.
+					            '</h4>
+					           </div>
+					        </div>
+					    </div>';
 					//O comando echo escreve ela na tela
 					echo $str;
 				}
+				echo '</div>';
 			}else{
-				echo "Os dados estão vazios";
+				echo "Não temos Instituições neste endereço";
 			}
 		}
 

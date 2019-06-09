@@ -61,33 +61,52 @@
     <!-- Portfolio Section -->
     <br><br>
     <label for="sel1">Selecione por onde deseja pesquisar:</label>
-    <div class="row">
-      <div class="col-3">
-        <select class="form-control" id="sel1">
-          <option>Bairro</option>
-          <option>Cidade</option>
-          <option>Estado</option>
-        </select>
+    <form method="POST">
+      <div class="row">
+        <div class="col-3">
+          <select name="tipo" class="form-control" id="sel1">
+            <option value="1">Bairro</option>
+            <option value="2">Cidade</option>
+            <option value="3">Estado</option>
+          </select>
+        </div>
+        <div class="col-5">
+          <input name="pesquisa" type="text" id="inputPesquisa" class="form-control" placeholder="Digite sua pesquisa: Cidade ou Bairro ou Estado. Ex: MG">
+        </div>
+        <div class="col-2">
+          <button class="btn btn-success btn-block text-uppercase" type="submit">Pesquisar</button>
+        </div>
       </div>
-      <div class="col-5">
-        <input type="text" id="inputPesquisa" class="form-control" placeholder="Digite sua pesquisa">
-      </div>
-      <div class="col-2">
-        <button class="btn btn-success btn-block text-uppercase" type="submit">Pesquisar</button>
-      </div>
-    </div>
+    </form>
     <br>
      <hr>
      <br>
-     <p>Resultado da pesquisa:</p>
-
-    <div class="row">
-      <?php
+    
+    <?php
         include_once 'php/class/Instituicao.class.php';
         $inst = new Instituicao();
-        $inst->escreverOsDados($inst->buscarTodosOsDadosComVistoriaOK());
-      ?>  
-    </div>
+        if (!empty($_POST)) {
+          # code...
+          //print_r($_POST);
+          //tipos de pesquisa
+          //1 - Bairro
+          //2 - Cidade
+          //3 - Estado
+          if($_POST['tipo'] == 1){
+            //echo "chamou a busca de bairro";
+            $inst->escreverOsDados($inst->buscarBairroComVistoriaOK($_POST['pesquisa']));
+          }else if($_POST['tipo'] == 2){
+            //echo "chamou a busca de cidade";
+            $inst->escreverOsDados($inst->buscarCidadeComVistoriaOK($_POST['pesquisa']));
+          }else if($_POST['tipo'] == 3){
+            //echo "chamou a busca de estado";
+            $inst->escreverOsDados($inst->buscarEstadoComVistoriaOK($_POST['pesquisa']));
+          }else{
+
+          }
+        }
+    ?>  
+     
 
 
   </div>
