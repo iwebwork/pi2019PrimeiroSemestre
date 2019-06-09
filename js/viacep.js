@@ -1,5 +1,6 @@
 function limpa_formulário_cep() {
         //Limpa valores do formulário de cep.
+        document.getElementById('cep').value=("");
         document.getElementById('rua').value=("");
         document.getElementById('bairro').value=("");
         document.getElementById('cidade').value=("");
@@ -7,14 +8,27 @@ function limpa_formulário_cep() {
         //document.getElementById('ibge').value=("");
 }
 
+function returnConteudo(argument) {
+    return argument;
+}
+
 function meu_callback(conteudo) {
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        document.getElementById('rua').value=(conteudo.logradouro);
-        document.getElementById('bairro').value=(conteudo.bairro);
-        document.getElementById('cidade').value=(conteudo.localidade);
-        document.getElementById('uf').value=(conteudo.uf);
+        var rua = document.getElementById('rua');
+        var bairro = document.getElementById('bairro');
+        var cidade = document.getElementById('cidade');
+        var uf = document.getElementById('uf');
+
+        rua.value = conteudo.logradouro;
+        bairro.value = conteudo.bairro;
+        cidade.value = conteudo.localidade;
+        uf.value = conteudo.uf;
+
+
         //document.getElementById('ibge').value=(conteudo.ibge);
+        returnConteudo(conteudo);
+
     } //end if.
     else {
         //CEP não Encontrado.
@@ -56,8 +70,8 @@ function pesquisacep(valor) {
         } //end if.
         else {
             //cep é inválido.
-            limpa_formulário_cep();
             alert("Formato de CEP inválido.");
+            limpa_formulário_cep();
         }
     } //end if.
     else {
