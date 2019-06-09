@@ -7,7 +7,7 @@
 
 	if(!empty($_POST)){
 		$inst->liberarInstituicao($_POST['id_inst']);
-		header("Location: ../index.php");
+		header("Location: ../admin/index.php");
 	}else{
 		echo "Não mandou o id";
 	}
