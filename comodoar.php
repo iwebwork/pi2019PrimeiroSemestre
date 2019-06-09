@@ -85,7 +85,7 @@
       <?php
         include_once 'php/class/Instituicao.class.php';
         $inst = new Instituicao();
-        $inst->escreverOsDados($inst->buscarTodosOsDados());
+        $inst->escreverOsDados($inst->buscarTodosOsDadosComVistoriaOK());
       ?>  
     </div>
 
